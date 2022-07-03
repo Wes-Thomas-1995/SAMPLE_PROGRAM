@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+{% block content %}
+
+  <div class="card mb-3">
+  <div class="card-header">
+  <br>
+  <br>
+  <center>
+  <h1>{{price_id_dis.client_name}}</h1>
+  <br>
+  <br>
+  <p><a href="{% url 'client_profile' price_id_dis.client_name.client_id %}" class="client_profile">Client Profile</a></p>
+  <p>Client Price List</p>
+  <br>
+  </center>
+  </div>
+  </div>
+
+<br>
+  <div class="card mb-3">
+  <div class="card-header">
+  <br>
+  <center>
+  <br>
+
+
+  <div class="table-responsive scrollbar">
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col" style="text-align:center" class="fs--1">Product Code</th>
+      <th scope="col" style="text-align:center" class="fs--1">Sales Price </th>
+      <th scope="col" style="text-align:center" class="fs--1">Sales Margin </th>
+      <th scope="col" style="text-align:center" class="fs--1">Update Price</th>
+      <th scope="col" style="text-align:center" class="fs--1">Last Updated</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for price in priceObj %}
+    <tr class="hover-actions-trigger">
+      <td style="text-align:center" class="fs--2">{{price.product_code}}</td>
+      <td style="text-align:center" class="fs--2">£ {{price.sales_price}}</td>
+      <td style="text-align:center" class="fs--2 text-success"> {{price.sales_margin|floatformat:0}} % </td>
+      <td style="text-align:center" class="fs--2"><a href="#">Update</a></td>
+      <td style="text-align:center" class="fs--2">{{price.price_creation_date|date:"d N Y" }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+  </table>
+  </div>
+  <br>
+  </center>
+  </div>
+  </div>
+
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+{% endblock content %}

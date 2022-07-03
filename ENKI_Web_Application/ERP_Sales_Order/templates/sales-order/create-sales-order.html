@@ -1,0 +1,100 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="card mb-3">
+<div class="card-header">
+<br>
+<br>
+<center>
+<h1>Create Sales Order</h1>
+
+<br>
+<br>
+</center>
+</div>
+<div class="card-body px-0 pt-0">
+
+
+<form method="post">
+{% csrf_token %}
+<center>
+    <label for="contact-form-subject"></label>
+    <select class="form-control custom-select w-75" id="contact-form-subject" name="subject" required>
+      <option value="">Select client name...</option>
+      <option value="Moore Electrical">Moore Electrical</option>
+      <option value="Johnson Electrical">Johnson Electrical</option>
+    </select>
+
+<br>
+<br>
+
+<label for="contact-form-email"></label>
+<input class="form-control w-75" type="text" name="email" placeholder="Set job reference...">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="table-responsive scrollbar">
+  <table class="table table-hover">
+    <thead>
+        <tr>
+          <th scope="col" style="text-align:center" class="fs--1"> Product Code</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Manufacturer</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Product Description</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Local Store Inventory</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Collective Inventory</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Order Quantity</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Add to Order</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+      {% for product in sales_order %}
+      {% for local in local_sales_order %}
+      {% if product.product_code__product_code == local.product_code__product_code %}
+      <tr class="hover-actions-trigger btn-reveal-trigger">
+        <td style="text-align:center" class="fs--2">{{product.product_code__product_code}}</td>
+        <td style="text-align:center" class="fs--2">{{product.product_code__manufacturer__manufacturer}}</td>
+        <td style="text-align:center" class="fs--2">{{product.product_code__description}}</td>
+        <td style="text-align:center" class="fs--2 text-success"> {{local.local_total}}</td>
+        <td style="text-align:center" class="fs--2 text-success">{{product.total}}</td>
+        <td style="text-align:center">
+          <div class="input-group input-group-sm">
+            <div class="input-group-prepend"><button class="btn btn-sm btn-outline-secondary border-300 px-2" data-field="input-quantity" data-type="minus">-</button></div>
+              <input class="form-control text-center px-2 input-quantity input-spin-none" type="number" min="1" value="1" aria-label="Amount (to the nearest dollar)" name="order_qty_{{product.product_code__product_code}}" style="max-width: 40px" />
+            <div class="input-group-append"><button class="btn btn-sm btn-outline-secondary border-300 px-2" data-field="input-quantity" data-type="plus">+</button></div>
+          </div>
+        </td>
+        <td class="py-2 align-middle white-space-nowrap"  style="text-align:center">
+          <input type="checkbox" name="sendtoseller" value="{{ product.product_code__product_code }}">
+        </td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+<br><br><br><br>
+  <button type="submit" class="btn btn-outline-success mr-1 mb-1" name="complete"  value="Complete Sales Order">Complete Sales Order</button>
+</center>
+</form>
+<br><br><br><br>
+</div>
+</div>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+
+
+
+
+{% endblock content %}

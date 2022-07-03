@@ -1,0 +1,61 @@
+{% if sales_order.count > 0 %}
+
+
+<div class="table-responsive scrollbar">
+  <table class="table table-hover">
+    <thead>
+        <tr>
+          <th scope="col" style="text-align:center" class="fs--1"> Product Code</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Manufacturer</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Product Description</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Inventory Quantity</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Order Quantity</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Add to Order</th>
+        </tr>
+    </thead>
+
+    <tbody>
+      {% for so in sales_order %}
+      <tr class="hover-actions-trigger btn-reveal-trigger">
+        <td style="text-align:center" class="fs--2">{{so.product_code__product_code}}</td>
+        <td style="text-align:center" class="fs--2">{{so.product_code__manufacturer__manufacturer}}</td>
+        <td style="text-align:center" class="fs--2">{{so.product_code__description}}</td>
+        <td style="text-align:center" class="fs--2 text-success">{{so.total}}</td>
+        <td style="text-align:center"><div class="input-group input-group-sm">
+          <div class="input-group-prepend">
+            <button class="btn btn-sm btn-outline-secondary border-300 px-2" data-field="input-quantity" data-type="minus">-</button>
+          </div>
+          <input class="form-control text-center px-2 input-quantity input-spin-none" type="number" min="1" value="1" aria-label="Amount (to the nearest dollar)" style="max-width: 40px" />
+          <div class="input-group-append">
+            <button class="btn btn-sm btn-outline-secondary border-300 px-2" data-field="input-quantity" data-type="plus">+</button>
+          </div>
+        </div></td>
+        <td class="py-2 align-middle white-space-nowrap"  style="text-align:center">
+          <div class="custom-control custom-checkbox">
+          <input class="custom-control-input checkbox-bulk-select-target" type="checkbox" id="customer-checkbox-{{so.product_code__product_code}}" />
+          <label class="custom-control-label" for="customer-checkbox-{{product.product_code__product_code}}"></label>
+          </div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+{% else %}
+
+<p>Search did not return any results</p>
+
+{% endif %}
+
+
+
+
+
+

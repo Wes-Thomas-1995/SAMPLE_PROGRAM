@@ -1,0 +1,37 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<br>
+<br>
+<br>
+<center>
+<h1>Semi - Annual Stock Upload</h1>
+<br>
+<br>
+<br>
+
+
+</center>
+{% if messages %}
+  {% for message in messages %}
+    <div>
+      <strong>{{message|safe}}</strong>
+    </div>
+  {% endfor %}
+{% else %}
+
+{{order}}
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <input type="file" name="file">
+  <br>
+  <br>
+
+  <button type="submit">Upload</button>
+
+</form>
+
+{% endif %}
+
+
+{% endblock content %}

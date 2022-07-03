@@ -1,0 +1,77 @@
+{% extends 'main.html' %}
+{% block content %}
+{% load static %}
+<div class="card mb-3">
+<div class="card-header">
+<br>
+<br>
+<center>
+<h1> Sales Order Analysis</h1>
+</center>
+<br>
+<br>
+<br>
+</div>
+</div>
+
+          <div class="media mb-4 mt-6"><span class="fa-stack mr-2 ml-n1"><i class="fas fa-circle fa-stack-2x text-300"></i><i class="fa-inverse fa-stack-1x text-primary fas fa-file-alt" data-fa-transform="shrink-2"></i></span>
+            <div class="media-body">
+              <h5 class="mb-0 text-primary position-relative"><span class="bg-200 pr-3">Quick Access Links</span><span class="border position-absolute absolute-vertical-center w-100 z-index--1 l-0"></span></h5>
+              <p class="mb-0"></p>
+            </div>
+          </div>
+<br>
+<div class="card-deck">
+  <div class="card"><a href="{% url 'inventory' %}">
+    <div class="card-img-top"><img class="img-fluid" src="{% static 'assets/img/generic/8.jpg' %}" alt="Card image cap"></div>
+    <div class="card-body">
+      <h5 class="card-title">Review Inventory</h5>
+      <p class="card-text"></p>
+      <p class="card-text"><small class="text-muted">Last updated 22 mins ago</small></p>
+    </div></a>
+  </div>
+  <div class="card"><a href="{% url 'create_sales_order' %}">
+    <div class="card-img-top"><img class="img-fluid" src="{% static 'assets/img/generic/8.jpg' %}" alt="Card image cap"></div>
+    <div class="card-body">
+      <h5 class="card-title">Create Sales Order</h5>
+      <p class="card-text"></p>
+      <p class="card-text"><small class="text-muted">Last updated 3 hours ago</small></p>
+    </div></a>
+  </div>
+  <div class="card"><a href="{% url 'purchase_order_form' %}">
+    <div class="card-img-top"><img class="img-fluid" src="{% static 'assets/img/generic/8.jpg' %}" alt="Card image cap"></div>
+    <div class="card-body">
+      <h5 class="card-title">Create Purchase Order</h5>
+      <p class="card-text"></p>
+      <p class="card-text"><small class="text-muted">Last updated on Monday</small></p>
+    </div></a>
+  </div>
+  <div class="card"><a href="{% url 'client_overview' %}">
+    <div class="card-img-top"><img class="img-fluid" src="{% static 'assets/img/generic/8.jpg' %}" alt="Card image cap"></div>
+    <div class="card-body">
+      <h5 class="card-title">Review Client Directory</h5>
+      <p class="card-text"></p>
+      <p class="card-text"><small class="text-muted">Last updated on Monday</small></p>
+    </div></a>
+  </div>
+</div>
+          <div class="media mb-4 mt-6"><span class="fa-stack mr-2 ml-n1"><i class="fas fa-circle fa-stack-2x text-300"></i><i class="fa-inverse fa-stack-1x text-primary fas fa-file-alt" data-fa-transform="shrink-2"></i></span>
+            <div class="media-body">
+              <h5 class="mb-0 text-primary position-relative"><span class="bg-200 pr-3">Whatever Else</span><span class="border position-absolute absolute-vertical-center w-100 z-index--1 l-0"></span></h5>
+              <p class="mb-0"></p>
+            </div>
+          </div>
+<div class="card mb-3">
+<div class="card-header">
+</div>
+<div class="card-body px-0 pt-0">
+<br><br><br><br>
+<br><br><br><br>
+</div>
+</div>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+
+
+{% endblock content %}

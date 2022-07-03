@@ -1,0 +1,69 @@
+{% extends 'main.html' %}
+{% block content %}
+
+
+<div class="card mb-3">
+<div class="card-header">
+<br>
+<br>
+<center>
+<h1>Sales Order History</h1>
+<br>
+<p> This page details all of the sales orders within the company library</p>
+<br>
+</center>
+</div>
+<div class="card-body px-0 pt-0">
+<center>
+
+<div id="dashboard-actions">
+<a href="{% url 'create_sales_order' %}"><button class="btn btn-outline-secondary mr-1 mb-1" type="button"> Create Sales Order </button></a>
+</div>
+
+<br>
+<br>
+
+
+
+<div class="table-responsive scrollbar">
+  <table class="table table-hover">
+
+    <thead>
+        <tr>
+          <th scope="col" style="text-align:center" class="fs--1"> Order ID </th>
+          <th scope="col" style="text-align:center" class="fs--1"> Client Name </th>
+          <th scope="col" style="text-align:center" class="fs--1"> Order Reference</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Total Unit Price </th>
+          <th scope="col" style="text-align:center" class="fs--1"> Order Location </th>
+          <th scope="col" style="text-align:center" class="fs--1"> Update Order </th>
+        </tr>
+    </thead>
+
+    <tbody>
+      {% for dist in distinct_salesorder %}
+      <tr class="hover-actions-trigger">
+        <td style="text-align:center" class="fs--2"><a href="{% url 'ind_salesorder' dist.order_id_no%}">SO {{dist.order_id_no}}</a></td>
+        <td style="text-align:center" class="fs--2">{{dist.order_id_no__client_name__client_name}}</td>
+        <td style="text-align:center" class="fs--2">{{dist.order_id_no__sales_reference}}</td>
+        <td style="text-align:center" class="fs--2">£ {{dist.total|floatformat:2}}</td>
+        <td style="text-align:center" class="fs--2">{{dist.order_id_no__order_location__company_location}}</td>
+        <td style="text-align:center" class="fs--2"><a href=""> Update </a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+
+</table>
+</div>
+</center>
+<br><br><br><br>
+<br><br><br><br>
+</div>
+</div>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+
+
+{% endblock content %}
+
+

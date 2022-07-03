@@ -1,0 +1,97 @@
+{% extends 'main.html' %}
+{% load mathfilters %}
+{% block content %}
+
+
+<div class="card mb-3">
+<div class="card-header">
+<center>
+<br>
+<br>
+<p>Sales Order Number</p>
+<b>SO {{order_id_dis.order_id_no__order_id_no}}</b>
+<br>
+<br>
+<p>Client Name</p>
+<b>{{order_id_dis.order_id_no__client_name__client_name}}</b>
+<br>
+<br>
+<p>Sales Order Reference</p>
+<b></b><br>
+<br>
+</center>
+</div>
+
+
+<div class="card-body px-0 pt-0">
+<center>
+
+
+
+<div id="dashboard-actions">
+  <a href=""><button class="btn btn-outline-secondary mr-1 mb-1" type="button">Add to Sales Order</button></a>
+  <a href=""><button class="btn btn-outline-secondary mr-1 mb-1" type="button">Update Sales Order</button></a>
+</div>
+
+
+</center>
+</div>
+
+
+<div class="card-body">
+<center>
+<br>
+<br>
+
+
+
+
+  <div class="table-responsive scrollbar">
+  <table class="table table-hover">
+
+    <thead>
+        <tr>
+          <th scope="col" style="text-align:center" class="fs--1">  Product Code  </th>
+          <th scope="col" style="text-align:center" class="fs--1">  Product Description  </th>
+          <th scope="col" style="text-align:center" class="fs--1">  Sales Quantity  </th>
+          <th scope="col" style="text-align:center" class="fs--1">  Unit Price  </th>
+          <th scope="col" style="text-align:center" class="fs--1">  Total Price  </th>
+          <th scope="col" style="text-align:center" class="fs--1">  Sales Date  </th>
+        </tr>
+    </thead>
+
+    <tbody>
+      {% for ind in ind_salesorder %}
+      {% for price in price_list %}
+      {% if  ind.product_code__product_code == price.product_code__product_code and ind.order_id_no__client_name__client_name == price.client_name__client_name %}
+      <tr class="hover-actions-trigger">
+        <td style="text-align:center" class="fs--2">{{ind.product_code__product_code}}</td>
+        <td style="text-align:center" class="fs--2">{{ind.product_code__description}}</td>
+        <td style="text-align:center" class="fs--2">{{ind.quantity}}</td>
+        <td style="text-align:center" class="fs--2">£ {{price.sales_price|floatformat:2}}</td>
+        <td style="text-align:center" class="fs--2">£ {{price.sales_price |mul:ind.quantity}}</td>
+        <td style="text-align:center" class="fs--2">{{ind.item_added_date|date:"d N Y" }}</td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+    </tbody>
+
+</table>
+</div>
+<br>
+<br>
+
+
+<p>Total Sales Order Price</p>
+<b>£ {{tsp|floatformat:2}}</b>
+</center>
+<br><br><br><br>
+<br><br><br><br>
+</div>
+</div>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+
+{% endblock content %}

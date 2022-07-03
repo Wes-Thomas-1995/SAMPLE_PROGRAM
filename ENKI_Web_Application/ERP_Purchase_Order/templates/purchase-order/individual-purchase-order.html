@@ -1,0 +1,89 @@
+{% extends 'main.html' %}
+{% block content %}
+
+
+<div class="card mb-3">
+<div class="card-header">
+<center>
+<br>
+<br>
+<p>Purchase Order Number</p>
+<b>PO {{order_id_dis.order_id_no__order_id_no}}</b>
+<br>
+<br>
+<p>Manufacturer</p>
+<b>{{order_id_dis.order_id_no__manufacturer__manufacturer}}</b>
+<br>
+<br>
+</center>
+</div>
+
+
+<div class="card-body px-0 pt-0">
+<center>
+
+
+
+<div id="dashboard-actions">
+  <a href=""><button class="btn btn-outline-secondary mr-1 mb-1" type="button">Recieve Purchase Order</button></a>
+  <a href=""><button class="btn btn-outline-secondary mr-1 mb-1" type="button">Update Purchase Order</button></a>
+</div>
+
+
+</center>
+</div>
+
+
+<div class="card-body">
+<center>
+<br>
+<br>
+
+
+
+
+  <div class="table-responsive scrollbar">
+  <table class="table table-hover">
+
+    <thead>
+        <tr>
+          <th scope="col" style="text-align:center" class="fs--1">  Product Code  </th>
+          <th scope="col" style="text-align:center" class="fs--1">  Product Description  </th>
+          <th scope="col" style="text-align:center" class="fs--1">  Quantity  </th>
+          <th scope="col" style="text-align:center" class="fs--1">  Unit Price  </th>
+          <th scope="col" style="text-align:center" class="fs--1">  Total Price  </th>
+          <th scope="col" style="text-align:center" class="fs--1">  Order Status  </th>
+        </tr>
+    </thead>
+
+    <tbody>
+      {% for ind in ind_purchaseorder %}
+      <tr class="hover-actions-trigger">
+        <td style="text-align:center" class="fs--2">{{ind.product_code__product_code}}</td>
+        <td style="text-align:center" class="fs--2">{{ind.product_code__description}}</td>
+        <td style="text-align:center" class="fs--2">{{ind.quantity}}</td>
+        <td style="text-align:center" class="fs--2">£ {{ind.cost_price|floatformat:2}}</td>
+        <td style="text-align:center" class="fs--2">£ {{ind.total_price|floatformat:2}}</td>
+        <td style="text-align:center" class="fs--2">{% if dist.order_id_no__order_status %} {% with a as b %} Recieved {% endwith %} {% else %} {% with bar as b %} Pending {% endwith %} {% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+
+</table>
+</div>
+<br>
+<br>
+
+
+<p>Total Purchase Order Price</p>
+<b>£ {{tsp|floatformat:2}}</b>
+</center>
+<br><br><br><br>
+<br><br><br><br>
+</div>
+</div>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+
+{% endblock content %}

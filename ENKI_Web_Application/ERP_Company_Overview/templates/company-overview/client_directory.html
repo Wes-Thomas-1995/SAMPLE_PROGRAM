@@ -1,0 +1,87 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="card mb-3">
+<div class="card-header">
+  <br>
+  <br>
+  <center>
+    <h1>Client Directory</h1>
+    <br>
+    <p>Client Directory of DT Electrical</p>
+    <br>
+  </center>
+</div>
+<div class="card-body px-0 pt-0">
+<center>
+<a href=""><button class="btn btn-outline-secondary mr-1 mb-1" type="button">Add New Client</button></a>
+<br>
+<br>
+<br>
+<p>Local Store - <b>{{ A }}</b></p>
+<br>
+
+  <div class="table-responsive scrollbar">
+  <table class="table table-hover">
+  <thead>
+    <tr class="d-flex">
+      <th class="col-3 fs--1" scope="col" style="text-align:center">Client Name</th>
+      <th class="col-3 fs--1" scope="col" style="text-align:center">Customer Name</th>
+      <th class="col-3 fs--1" scope="col" style="text-align:center">Customer Phone No.</th>
+      <th class="col-3 fs--1" scope="col" style="text-align:center">Customer Email</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for client in local_client_details %}
+    <tr class="hover-actions-trigger d-flex">
+      <td class="col-3 fs--2" style="text-align:center"><a href="{% url 'client_profile' client.client_id %}" class="client_profile">{{client.client_name}}</a></td>
+      <td class="col-3 fs--2" style="text-align:center">{{client.point_of_contact_first}} {{client.point_of_contact_last}}</td>
+      <td class="col-3 fs--2" style="text-align:center">{{client.client_telephone}}</td>
+      <td class="col-3 fs--2" style="text-align:center">{{client.client_email}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+  </table>
+  </div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<p>Clients from your other stores</p>
+<br>
+
+  <div class="table-responsive scrollbar">
+  <table class="table table-hover">
+  <thead>
+    <tr class="d-flex">
+      <th class="col-3 fs--1" scope="col" style="text-align:center">Client Name</th>
+      <th class="col-3 fs--1" scope="col" style="text-align:center">Customer Name</th>
+      <th class="col-3 fs--1" scope="col" style="text-align:center">Customer Phone No.</th>
+      <th class="col-3 fs--1" scope="col" style="text-align:center">Customer Store Location</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for client in other_client_details %}
+    <tr class="hover-actions-trigger d-flex">
+      <td class="col-3 fs--2" style="text-align:center"><a href="{% url 'client_profile' client.client_id %}" class="client_profile">{{client.client_name}}</a></td>
+      <td class="col-3 fs--2" style="text-align:center">{{client.point_of_contact_first}} {{client.point_of_contact_last}}</td>
+      <td class="col-3 fs--2" style="text-align:center">{{client.client_telephone}}</td>
+      <td class="col-3 fs--2" style="text-align:center">{{client.child_company_name__company_location}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+  </table>
+  </div>
+
+
+</center>
+<br><br><br><br>
+<br><br><br><br>
+</div>
+</div>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+{% endblock content %}

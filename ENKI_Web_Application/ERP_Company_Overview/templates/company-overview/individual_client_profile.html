@@ -1,0 +1,145 @@
+{% extends 'main.html' %}
+{% block content %}
+
+  <div class="card mb-3">
+  <div class="card-header">
+  <br>
+  <br>
+  <center>
+  <h1>{{client_id_dis.client_name}}</h1>
+  <br>
+  <br>
+  <p>Client Profile</p>
+  <p><a href="{% url 'ind_client_price_list' client_id_dis.client_id %}" class="ind_client_price_list">Client Price List</a></p>
+  </center>
+  </div>
+  <div class="card-body px-0 pt-0">
+  </div>
+  </div>
+
+
+
+
+<br>
+
+
+
+
+  <div class="card mb-3">
+  <div class="card-header">
+  <br>
+  <br>
+  <center>
+
+  <div class="table-responsive scrollbar">
+  <table class="table table-hover">
+  <tbody>
+    <tr class="hover-actions-trigger">
+      <td style="text-align:center" class="fs--2"></td>
+      <td class="fs--2"><b>Client Account Status   -</b></td>
+      <td class="fs--2">{% if client_id_dis.account_status %} {% with a as b %} Account {% endwith %} {% else %} {% with bar as b %} General {% endwith %} {% endif %}</td>
+      <td style="text-align:center" class="fs--2"></td>
+    </tr>
+    <tr class="hover-actions-trigger">
+      <td style="text-align:center" class="fs--2"></td>
+      <td class="fs--2"><b>Affiliated Wholesaler   -</b></td>
+      <td class="fs--2">{{client_id_dis.child_company_name}}</td>
+      <td style="text-align:center" class="fs--2"></td>
+    </tr>
+  </tbody>
+  </table>
+  </div>
+  <br>
+  <br>
+  <div class="table-responsive scrollbar">
+  <table class="table table-hover">
+  <tbody>
+      <tr class="hover-actions-trigger">
+      <td style="text-align:center" class="fs--2"></td>
+      <td class="fs--2"><b>Client Point of Contact -</b></td>
+      <td class="fs--2"> {{client_id_dis.point_of_contact_first}} {{client_id_dis.point_of_contact_last}}</td>
+      <td style="text-align:center" class="fs--2"></td>
+    </tr>
+    </tr>
+      <tr class="hover-actions-trigger">
+      <td style="text-align:center" class="fs--2"></td>
+      <td class="fs--2"><b>Client Email Address    -</b></td>
+      <td class="fs--2">{{client_id_dis.client_email}}</td>
+      <td style="text-align:center" class="fs--2"></td>
+    </tr>
+    </tr>
+      <tr class="hover-actions-trigger">
+      <td style="text-align:center" class="fs--2"></td>
+      <td class="fs--2"><b>Client Telephone Number -</b></td>
+      <td class="fs--2">{{client_id_dis.client_telephone}}</td>
+      <td style="text-align:center" class="fs--2"></td>
+    </tr>
+    </tr>
+      <tr class="hover-actions-trigger">
+      <td style="text-align:center" class="fs--2"></td>
+      <td class="fs--2"><b>Client Address          -</b></td>
+      <td class="fs--2">{{client_id_dis.client_address}}, {{client_id_dis.client_postcode}}</td>
+      <td style="text-align:center" class="fs--2"></td>
+    </tr>
+  </tbody>
+  </table>
+  </div>
+  </center>
+  <br>
+  </div>
+
+  <div class="card-body px-0 pt-0">
+  </div>
+  </div>
+
+
+
+
+<br>
+
+
+
+
+  <div class="card mb-3">
+  <div class="card-header">
+  <br>
+  <center>
+
+<div class="table-responsive scrollbar">
+  <table class="table table-hover">
+    <thead>
+        <tr>
+          <th scope="col" style="text-align:center" class="fs--1"> Sales Order No.</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Sales Order Reference</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Total Sales Price</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Order Location</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Date of Sale</th>
+        </tr>
+    </thead>
+
+    <tbody>
+      {% for dist in distinct_salesorder %}
+      <tr class="hover-actions-trigger">
+        <td style="text-align:center" class="fs--2"><a href="">SO {{dist.order_id_no}}</a></td>
+        <td style="text-align:center" class="fs--2">{{dist.order_id_no__sales_reference}}</td>
+        <td style="text-align:center" class="fs--2">£ {{dist.total|floatformat:2}}</td>
+        <td style="text-align:center" class="fs--2">{{dist.order_id_no__order_location__company_location}}</td>
+        <td style="text-align:center" class="fs--2">{{dist.order_id_no__order_creation_date|date:"d N Y" }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+  </center>
+  <br>
+  </div>
+  </div>
+
+<br><br><br><br>
+<br><br><br><br>
+
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+{% endblock content %}

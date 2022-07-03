@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="card mb-3">
+<div class="card-header">
+<br>
+<br>
+<center>
+<h1>Client Price List</h1>
+<br>
+<p>Price List of clients of DT Electrical</p>
+<br>
+</center>
+</div>
+<div class="card-body px-0 pt-0">
+<center>
+<br>
+<br>
+<br>
+
+  <div class="table-responsive scrollbar">
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col" style="text-align:center" class="fs--1">Client Name</th>
+      <th scope="col" style="text-align:center" class="fs--1">Customer Name</th>
+      <th scope="col" style="text-align:center" class="fs--1">Price List</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for client in client_details %}
+    <tr class="hover-actions-trigger">
+      <td style="text-align:center" class="fs--2">{{client.client_name}}</td>
+      <td style="text-align:center" class="fs--2">{{client.point_of_contact_first}} {{client.point_of_contact_last}}</td>
+      <td style="text-align:center" class="fs--2"><a href="{% url 'ind_client_price_list' client.client_id %}" class="ind_client_price_list">View</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+  </table>
+  </div>
+
+</center>
+<br><br><br><br>
+<br><br><br><br>
+</div>
+</div>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+{% endblock content %}

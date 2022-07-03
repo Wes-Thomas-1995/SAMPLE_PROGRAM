@@ -1,0 +1,68 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<br>
+<br>
+<br>
+<center>
+  <h1>Product Library</h1>
+  <p> This page details all of the available products within your company portfolio</p>
+<br>
+<br>
+
+
+
+    <div class="row justify-content-center"><div class="col-xl-3 col-md-6">
+        <a href="" class="card bg-success text-white mb-4">
+        <div class="card-body">Add New Product</div></a>
+    </div></div>
+
+
+<br>
+<br>
+
+
+
+<div class="card-body">
+<table id="datatablesSimple">
+
+    <thead>
+        <tr>
+          <th style="text-align:center"> Product Code </th>
+          <th style="text-align:center"> Category </th>
+          <th style="text-align:center"> Product Type </th>
+          <th style="text-align:center"> Manufacturer</th>
+          <th style="text-align:center"> Description </th>
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+          <th style="text-align:center"> Product Code </th>
+          <th style="text-align:center"> Category </th>
+          <th style="text-align:center"> Product Type </th>
+          <th style="text-align:center"> Manufacturer</th>
+          <th style="text-align:center"> Description </th>
+        </tr>
+    </tfoot>
+
+    <tbody>
+      {% for product in product_library %}
+      <tr>
+        <td style="text-align:center">{{product.product_code}}</a></td>
+        <td style="text-align:center">{{product.categorisation}}</td>
+        <td style="text-align:center">{{product.product_type}}</td>
+        <td style="text-align:center">{{product.manufacturer__manufacturer}}</td>
+        <td style="text-align:center">{{product.description}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+
+</table>
+</div>
+</center>
+
+
+{% endblock content %}
+
+

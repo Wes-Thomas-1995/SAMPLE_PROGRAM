@@ -1,0 +1,82 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="card mb-3">
+<div class="card-header">
+<br>
+<br>
+<center>
+<h1>Inventory Overview</h1>
+<br>
+<p> The store Inventory below regards - <b>{{location}}</b></p>
+<br>
+</center>
+</div>
+<div class="card-body px-0 pt-0">
+<center>
+<div id="dashboard-actions">
+  <a href=""><button class="btn btn-secondary mr-1 mb-1" type="button">Export Inventory</button></a>
+  <a href=""><button class="btn btn-secondary mr-1 mb-1" type="button">S-A Stock Upload</button></a>
+</div>
+
+<br>
+<br>
+
+
+<div class="dropdown text-sans-serif d-inline-block mb-2">
+  <button class="btn btn-falcon-default dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select Store Location </button>
+  <div class="dropdown-menu dropdown-menu-right py-0" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="{% url 'inventory' %}">All Locations</a>
+    <div class="dropdown-divider"></div>
+    {% for item in droplist %}
+    <a class="dropdown-item" href="{% url 'inventory-specific' item.child_company_id %}">{{item.company_location}}</a>
+    {% endfor %}
+  </div>
+
+</div>
+
+<br>
+<br>
+<br>
+
+
+
+
+<div class="table-responsive scrollbar">
+  <table class="table table-hover">
+    <thead>
+        <tr>
+          <th scope="col" style="text-align:center" class="fs--1"> Product Code</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Product Category</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Product Type</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Manufacturer</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Stock Quantity</th>
+          <th scope="col" style="text-align:center" class="fs--1"> Product Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+      {% for product in inventory %}
+      <tr class="hover-actions-trigger">
+        <td style="text-align:center" class="fs--2">{{product.product_code__product_code}}</td>
+        <td style="text-align:center" class="fs--2">{{product.product_code__categorisation}}</td>
+        <td style="text-align:center" class="fs--2">{{product.product_code__product_type}}</td>
+        <td style="text-align:center" class="fs--2">{{product.product_code__manufacturer__manufacturer}}</td>
+        <td style="text-align:center" class="fs--2 text-success">{{product.total}}</td>
+        <td style="text-align:center" class="fs--2">{{product.product_code__description}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+</center>
+<br><br><br><br>
+<br><br><br><br>
+</div>
+</div>
+<br><br><br><br>
+<br><br><br><br>
+<br><br><br><br>
+
+{% endblock content %}
